@@ -1,0 +1,20 @@
+.history {
+  display: flex;
+  margin: 0 auto;
+  padding: 30px;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.formAddHistory {
+  margin: 0 auto;
+}
+
+.select-tag {
+  line-height: normal;
+}
+.input-text {
+  width: 100%;
+}
+.input-hour {
+}
