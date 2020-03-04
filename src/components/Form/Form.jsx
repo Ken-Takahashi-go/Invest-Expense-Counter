@@ -1,30 +1,37 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addItem, addHour } from "./../../actions/itemActionCreator";
+import { addItem } from "./../../actions/itemActionCreator";
 import "./Form.css";
 
 const Form = props => {
   const [text, setText] = useState("");
   const [hour, setHour] = useState(0);
+  const [status, setStatus] = useState("投資");
 
   const onClickButton = () => {
-    if ((text, hour)) {
-      props.addItem(text);
+    if ((text, hour, status)) {
+      props.addItem(text, hour, status);
       setText("");
-      props.addHour(hour);
       setHour(0);
+      setStatus("投資");
     }
   };
 
   return (
     <div className="history">
       <div className="select-tag">
-        <select name="InvestExpense">
-          <option value="投資">投資</option>
-          <option value="浪費">浪費</option>
+        <select
+          name="InvestExpense"
+          value={status}
+          onChange={e => {
+            setStatus(e.target.value);
+          }}
+        >
+          <option>投資</option>
+          <option>浪費</option>
         </select>
       </div>
-      <div className="form">
+      <div className="text-form">
         <input
           className="input-text"
           type="text"
@@ -35,7 +42,7 @@ const Form = props => {
           placeholder="please input your activity"
         />
       </div>
-      <div>
+      <div className="hour-form">
         <input
           className="input-hour"
           type="number"
@@ -55,12 +62,8 @@ const Form = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addItem: text => {
-      const action = addItem(text);
-      dispatch(action);
-    },
-    addHour: hour => {
-      const action = addHour(hour);
+    addItem: (text, hour, status) => {
+      const action = addItem(text, hour, status);
       dispatch(action);
     }
   };

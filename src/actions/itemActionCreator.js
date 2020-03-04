@@ -1,17 +1,11 @@
 export const ADD_ITEM = "ADD_ITEM";
-export const ADD_HOUR = "ADD_HOUR";
 export const DELETE_ITEM = "DELETE_ITEM";
 
-export const addItem = text => {
+export const addItem = (status, text, hour) => {
   return {
     type: ADD_ITEM,
-    text
-  };
-};
-
-export const addHour = hour => {
-  return {
-    type: ADD_HOUR,
+    status,
+    text,
     hour
   };
 };

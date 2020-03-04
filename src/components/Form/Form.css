@@ -1,20 +1,26 @@
 .history {
   display: flex;
   margin: 0 auto;
-  padding: 30px;
+  padding: 10px;
   width: 50%;
   align-items: center;
   justify-content: center;
-}
-.formAddHistory {
-  margin: 0 auto;
 }
 
 .select-tag {
   line-height: normal;
 }
-.input-text {
-  width: 100%;
+.text-form {
+  width: 30%;
+  border-radius: 10px;
 }
+
+.input-text {
+  width: 150%;
+  border-radius: 10px;
+}
+
 .input-hour {
+  width: 50%;
+  border-radius: 10px;
 }

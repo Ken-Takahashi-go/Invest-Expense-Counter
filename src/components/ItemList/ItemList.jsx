@@ -1,21 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  addItem,
-  addHour,
-  deleteItem
-} from "./../../actions/itemActionCreator";
+import { addItem, deleteItem } from "./../../actions/itemActionCreator";
+import "./ItemList.css";
 
 const ItemList = props => {
   const itemLists = props.items.map((item, index) => {
     return (
       <li key={index} className="itemLists-item container">
-        <p>
-          <span>
-            {item.text}
-            {item.hour} Hour
-          </span>
-        </p>
+        {item.status}
+        {item.text}
+        {item.hour} Hour
         <button
           onClick={() => {
             props.deleteItem(item.id);
@@ -26,23 +20,18 @@ const ItemList = props => {
       </li>
     );
   });
-  return <ul>{itemLists}</ul>;
+  return <dl className="itemContainer">{itemLists}</dl>;
 };
 
 const mapStateToProps = state => {
-  let items;
-  items = [];
-  return { items };
+  console.log(state);
+  return { items: state };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     addItem: text => {
       const action = addItem(text);
-      dispatch(action);
-    },
-    addHour: hour => {
-      const action = addHour(hour);
       dispatch(action);
     },
     deleteItem: id => {

@@ -1,0 +1,21 @@
+.itemContainer {
+  list-style: none;
+  display: flex;
+  margin: 0 auto;
+  padding: 10px;
+  width: 30%;
+}
+dt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cddcdc;
+  background-image: linear-gradient(-225deg, #d7fffe 0%, #d7fffe 100%);
+  border-radius: 20px;
+  width: 100%;
+}
+dt button {
+  margin: 20px;
+  background: blue;
+  color: white;
+}
