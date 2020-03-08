@@ -2,16 +2,24 @@ import React from "react";
 
 import Form from "./components/Form/Form";
 import "./App.css";
-import InvestmentExpense from "./components/InvestmentExpense/InvestmentExpense";
+import InvestExpense from "./components/InvestExpense/InvestExpense";
 import ItemList from "./components/ItemList/ItemList";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
+import BarChart from "./components/BarGraph/BarGraph";
 
 function App() {
   return (
-    <div className="App">
-      <InvestmentExpense />
-      <Form />
-      <ItemList />
-    </div>
+    <Box>
+      <Container maxWidth="sm">
+        <div className="App">
+          <InvestExpense />
+          <BarChart />
+          <Form />
+          <ItemList />
+        </div>
+      </Container>
+    </Box>
   );
 }
 

@@ -1,4 +1,8 @@
-import { addItem, deleteItem } from "../../src/actions/itemActionCreator";
+import {
+  addItem,
+  deleteItem,
+  hourAmount
+} from "../../src/actions/itemActionCreator";
 import { Item } from "../../src/models/Item";
 import { itemReducer } from "./../../src/reducers/itemReducer.js";
 
@@ -56,5 +60,20 @@ describe("itemReducer.jsのテスト", () => {
     expect(state).toHaveLength(2);
     expect(state[0] instanceof Item).toBe(true);
     expect(state[1].text).toBe("dummy2");
+  });
+  it("action.type === HOUR_AMOUNTの時", () => {
+    const dummyStatus = "投資";
+    const dummyText = "dummy";
+    const dummyHour = 1;
+    const action = hourAmount(dummyStatus, dummyText, dummyHour);
+    const initialState = [];
+    const newState = itemReducer(initialState, action);
+    console.log(newState);
+    const item = new Item(dummyStatus, dummyText, dummyHour);
+    console.log(item);
+    // expect(newState).toStrictEqual([item]);
+    expect(newState[0] instanceof Item).toBeTruthy();
+    expect(newState[0].hour).toBe(1);
+    expect(newState[0].status).toStrictEqual("投資");
   });
 });

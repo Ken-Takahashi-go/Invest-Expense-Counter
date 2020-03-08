@@ -11,6 +11,7 @@ export const itemReducer = (state = [], action) => {
       return state.filter((item, id) => {
         return action.id !== item.id;
       });
+
     default:
       return state;
   }

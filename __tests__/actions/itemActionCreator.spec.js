@@ -1,5 +1,13 @@
-import { ADD_ITEM, DELETE_ITEM } from "./../../src/actions/itemActionCreator";
-import { addItem, deleteItem } from "./../../src/actions/itemActionCreator";
+import {
+  ADD_ITEM,
+  DELETE_ITEM,
+  HOUR_AMOUNT
+} from "./../../src/actions/itemActionCreator";
+import {
+  addItem,
+  deleteItem,
+  hourAmount
+} from "./../../src/actions/itemActionCreator";
 
 describe("itemActionCreator.jsのテスト", () => {
   it("addItemメソッド", () => {
@@ -25,6 +33,17 @@ describe("itemActionCreator.jsのテスト", () => {
     expect(action).toStrictEqual({
       type: DELETE_ITEM,
       id: index
+    });
+  });
+  it("hourAmountメソッド", () => {
+    const dummyHour = 1;
+
+    const action = hourAmount(dummyHour);
+    console.log(action);
+
+    expect(action).toStrictEqual({
+      type: HOUR_AMOUNT,
+      hour: dummyHour
     });
   });
 });
