@@ -1,0 +1,77 @@
+.item-box {
+  margin: 0 auto;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  box-shadow: 1px 1px 1px;
+  border-radius: 5px;
+}
+
+.item-box h4 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.item-box h4:after {
+  content: "";
+  display: block;
+  width: 20%;
+  margin: 0 auto;
+  border-bottom: 2px solid #a1c4fd;
+}
+
+.itemContainer {
+  list-style: none;
+  margin: 0 auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.invested {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  width: 100%;
+  display: inline-block;
+  border-radius: 5px;
+  background-image: linear-gradient(-225deg, #7de2fc 0%, #fffeff 100%);
+  box-shadow: 1px 1px 1px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+.expensed {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+.rested {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  background-image: linear-gradient(
+    -225deg,
+    #39f3bb 0%,
+    #90f9c4 48%,
+    #dfffcd 100%
+  );
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+.itemLists-item span {
+  margin: 0 5px;
+}
+button {
+  position: absolute;
+  right: 2px;
+  top: 50;
+  border: none;
+  border-radius: 50%;
+}
