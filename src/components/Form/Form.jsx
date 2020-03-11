@@ -12,10 +12,16 @@ const Form = props => {
   const [hour, setHour] = useState(0);
   const [status, setStatus] = useState("投資");
 
+<<<<<<< HEAD
   const onClickButton = async () => {
     if ((text, hour, status)) {
       props.addItem(status, text, hour);
 
+=======
+  const onClickButton = () => {
+    if ((text, hour, status)) {
+      props.addItem(status, text, hour);
+>>>>>>> origin/master
       setText("");
       setHour(0);
       setStatus("投資");
@@ -27,6 +33,7 @@ const Form = props => {
       <Container>
         <h3>今日の積み上げ</h3>
         <div className="text-field">
+<<<<<<< HEAD
           <Input
             variant="outlined"
             className="input-text"
@@ -37,6 +44,8 @@ const Form = props => {
             }}
             placeholder="please input your activity"
           />
+=======
+>>>>>>> origin/master
           <select
             name="chooseStatus"
             className="radio-select"
@@ -50,6 +59,19 @@ const Form = props => {
             <option value="癒し">癒し</option>
           </select>
 
+<<<<<<< HEAD
+=======
+          <Input
+            variant="outlined"
+            className="input-text"
+            type="text"
+            value={text}
+            onChange={e => {
+              setText(e.target.value);
+            }}
+            placeholder="please input your activity"
+          />
+>>>>>>> origin/master
           <input
             variant="outlined"
             label="Hour"

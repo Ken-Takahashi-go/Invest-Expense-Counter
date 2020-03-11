@@ -4,7 +4,10 @@ import { addItem, deleteItem } from "./../../actions/itemActionCreator";
 import "./ItemList.css";
 import Container from "@material-ui/core/Container";
 import ClassNames from "classnames";
+<<<<<<< HEAD
 import Filter from "./../Filter/Filter";
+=======
+>>>>>>> origin/master
 
 const ItemList = props => {
   const itemLists = props.items.map((item, index) => {
@@ -41,7 +44,10 @@ const ItemList = props => {
     <Container maxWidth="sm">
       <div className="item-box">
         <h4>積み上げ履歴</h4>
+<<<<<<< HEAD
         <Filter />
+=======
+>>>>>>> origin/master
         <ul className="itemContainer">{itemLists}</ul>
       </div>
     </Container>

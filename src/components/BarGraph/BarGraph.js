@@ -8,12 +8,20 @@ const BarChart = props => {
     .map(item => {
       return Number(item.hour);
     });
+<<<<<<< HEAD
 
+=======
+  console.log(investLists);
+>>>>>>> origin/master
   const expenseLists = props.items
     .filter(item => item.status === "浪費")
     .map(item => {
       return Number(item.hour);
     });
+<<<<<<< HEAD
+=======
+  console.log(expenseLists);
+>>>>>>> origin/master
 
   const invest = investLists.reduce((acc, amount) => acc + amount, 0);
   const expense = expenseLists.reduce((acc, amount) => acc + amount, 0);

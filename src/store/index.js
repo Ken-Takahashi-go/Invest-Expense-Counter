@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createStore, applyMiddleware, compose } from "redux";
 import { itemReducer } from "../reducers/itemReducer";
 import thunk from "redux-thunk";
@@ -12,6 +13,14 @@ const store = createStore(
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig)
   )
+=======
+import { createStore } from "redux";
+import { itemReducer } from "../reducers/itemReducer";
+
+const store = createStore(
+  itemReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+>>>>>>> origin/master
 );
 
 export default store;
