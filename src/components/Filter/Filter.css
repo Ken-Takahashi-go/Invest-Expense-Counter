@@ -1,0 +1,29 @@
+.Filter-container {
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  box-shadow: 1px 1px 1px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 80%;
+}
+
+.Filter-container .showAll {
+  display: inline;
+  left: 0;
+}
+.Filter-container .showInvest {
+  display: inline;
+  left: 25%;
+}
+.Filter-container .showExpense {
+  display: inline;
+  left: 50%;
+}
+.Filter-container .showHealing {
+  display: inline;
+  right: 0;
+}

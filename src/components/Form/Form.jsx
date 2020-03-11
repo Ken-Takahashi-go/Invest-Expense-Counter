@@ -27,6 +27,16 @@ const Form = props => {
       <Container>
         <h3>今日の積み上げ</h3>
         <div className="text-field">
+          <Input
+            variant="outlined"
+            className="input-text"
+            type="text"
+            value={text}
+            onChange={e => {
+              setText(e.target.value);
+            }}
+            placeholder="please input your activity"
+          />
           <select
             name="chooseStatus"
             className="radio-select"
@@ -40,16 +50,6 @@ const Form = props => {
             <option value="癒し">癒し</option>
           </select>
 
-          <Input
-            variant="outlined"
-            className="input-text"
-            type="text"
-            value={text}
-            onChange={e => {
-              setText(e.target.value);
-            }}
-            placeholder="please input your activity"
-          />
           <input
             variant="outlined"
             label="Hour"
