@@ -5,7 +5,7 @@ import {
   showInvest,
   showExpense,
   showHealing
-} from "../../actions/itemFilterCreator.js";
+} from "../../actions/visibleFilterCreator.js";
 import "./Filter.css";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";

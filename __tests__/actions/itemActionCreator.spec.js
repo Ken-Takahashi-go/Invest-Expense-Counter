@@ -1,21 +1,16 @@
 import {
   ADD_ITEM,
-  DELETE_ITEM,
-  HOUR_AMOUNT
-} from "./../../src/actions/itemActionCreator";
-import {
-  addItem,
-  deleteItem,
-  hourAmount
-} from "./../../src/actions/itemActionCreator";
+  DELETE_ITEM
+} from "./../../src/actions/itemActionCreator.js";
+import { addItem, deleteItem } from "./../../src/actions/itemActionCreator";
 
 describe("itemActionCreator.jsのテスト", () => {
-  it("addItemメソッド", () => {
+  it("addItemメソッド", async () => {
     const dummyStatus = "浪費";
     const dummyText = "dummy";
     const dummmyHour = 3;
 
-    const action = addItem(dummyStatus, dummyText, dummmyHour);
+    const action = await addItem(dummyStatus, dummyText, dummmyHour);
     console.log(action);
 
     expect(action).toStrictEqual({
@@ -25,7 +20,7 @@ describe("itemActionCreator.jsのテスト", () => {
       hour: dummmyHour
     });
   });
-  it("deleteItemメソッド", () => {
+  xit("deleteItemメソッド", () => {
     const index = 1;
     const action = deleteItem(index);
     console.log(action);
@@ -33,17 +28,6 @@ describe("itemActionCreator.jsのテスト", () => {
     expect(action).toStrictEqual({
       type: DELETE_ITEM,
       id: index
-    });
-  });
-  it("hourAmountメソッド", () => {
-    const dummyHour = 1;
-
-    const action = hourAmount(dummyHour);
-    console.log(action);
-
-    expect(action).toStrictEqual({
-      type: HOUR_AMOUNT,
-      hour: dummyHour
     });
   });
 });

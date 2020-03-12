@@ -2,12 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { addItem, deleteItem } from "./../../actions/itemActionCreator";
 import "./ItemList.css";
+import {
+  SHOW_INVEST,
+  SHOW_EXPENSE,
+  SHOW_HEALING
+} from "../../actions/visibleFilterCreator";
 import Container from "@material-ui/core/Container";
 import ClassNames from "classnames";
-<<<<<<< HEAD
 import Filter from "./../Filter/Filter";
-=======
->>>>>>> origin/master
 
 const ItemList = props => {
   const itemLists = props.items.map((item, index) => {
@@ -44,10 +46,7 @@ const ItemList = props => {
     <Container maxWidth="sm">
       <div className="item-box">
         <h4>積み上げ履歴</h4>
-<<<<<<< HEAD
         <Filter />
-=======
->>>>>>> origin/master
         <ul className="itemContainer">{itemLists}</ul>
       </div>
     </Container>
@@ -55,6 +54,18 @@ const ItemList = props => {
 };
 
 const mapStateToProps = state => {
+  let items;
+
+  if (state.statusFilter === SHOW_INVEST) {
+    items = state.items.filter(item => !item.hasCompleted());
+  } else if (state.statusFilter === SHOW_EXPENSE) {
+    items = state.items.filter(item => item.hasCompleted());
+  } else if (state.statusFilter === SHOW_HEALING) {
+    items = state.items.filter(item => item.hasCompleted());
+  } else {
+    items = [];
+  }
+
   return { items: state };
 };
 

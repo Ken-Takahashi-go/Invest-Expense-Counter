@@ -3,9 +3,9 @@ import {
   SHOW_INVEST,
   SHOW_EXPENSE,
   SHOW_HEALING
-} from "../actions/itemFilterCreator.js";
+} from "../actions/visibleFilterCreator.js";
 
-export const itemFilterReducer = (state = SHOW_ALL, action) => {
+export const visibleFilterReducer = (state = SHOW_ALL, action) => {
   switch (action.type) {
     case SHOW_ALL:
       return SHOW_ALL;
