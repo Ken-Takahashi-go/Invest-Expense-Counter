@@ -1,3 +1,5 @@
+import firebase from "./../Config/fbConfig";
+
 export const SHOW_ALL = "SHOW_ALL";
 export const SHOW_INVEST = "SHOW_INVEST";
 export const SHOW_EXPENSE = "SHOW_EXPENSE";
@@ -7,76 +9,71 @@ export const SHOW_INVEST_ERROR = "SHOW_INVEST_ERROR";
 export const SHOW_EXPENSE_ERROR = "SHOW_EXPENSE_ERROR";
 export const SHOW_HEALING_ERROR = "SHOW_HEALING_ERROR";
 
-export const showAll = () => {
-  return {
-    type: SHOW_ALL
+export const showAll = (status, text, hour) => {
+  return async dispatch => {
+    try {
+      const db = await firebase.firestore();
+      const refActivities = await db.collection("activities").get();
+      const refArray = refActivities.docs.map(doc => doc.data());
+      console.log(refArray);
+      dispatch({
+        type: SHOW_ALL,
+        status,
+        text,
+        hour
+      });
+    } catch (error) {
+      dispatch({ type: "SHOW_ALL_ERROR", error });
+      alert("NG");
+    }
   };
-  // return async (dispatch, getState, { getFirebase, getFirestore }) => {
-  //   try {
-  //     const firestore = await getFirestore();
-  //     const data = firestore.collection("activities").get();
-  //     console.log(data);
-  //     data.dispatch({
-  //       type: SHOW_ALL,
-  //       payload
-  //     });
-  //   } catch (error) {
-  //     dispatch({ type: "SHOW_ALL_ERROR", error });
-  //     alert("NG");
-  //   }
-  // };
 };
 export const showInvest = () => {
-  return {
-    type: SHOW_INVEST
+  return async dispatch => {
+    try {
+      const db = await firebase.firestore();
+      const refActivities = await db.collection("activities").get();
+      const refArray = refActivities.docs.map(doc => doc.data());
+      console.log(refArray);
+      dispatch({
+        type: SHOW_INVEST
+      });
+      console.log(dispatch);
+    } catch (error) {
+      dispatch({ type: SHOW_INVEST_ERROR, error });
+      alert("NG");
+    }
   };
-  // return async (dispatch, getState, { getFirebase, getFirestore }) => {
-  //   try {
-  //     const firestore = await getFirestore();
-  //     firestore.collection("activities").get();
-  //     dispatch({
-  //       type: SHOW_INVEST,
-  //       payload
-  //     });
-  //   } catch (error) {
-  //     dispatch({ type: "SHOW_INVEST_ERROR", error });
-  //     alert("NG");
-  //   }
-  // };
 };
 export const showExpense = () => {
-  return {
-    type: SHOW_EXPENSE
+  return async dispatch => {
+    try {
+      const db = await firebase.firestore();
+      const refActivities = await db.collection("activities").get();
+      const refArray = refActivities.docs.map(doc => doc.data());
+      console.log(refArray);
+      dispatch({
+        type: SHOW_EXPENSE
+      });
+    } catch (error) {
+      dispatch({ type: SHOW_EXPENSE_ERROR, error });
+      alert("NG");
+    }
   };
-  // return async (dispatch, getState, { getFirebase, getFirestore }) => {
-  //   try {
-  //     const firestore = await getFirestore();
-  //     firestore.collection("activities").get();
-  //     dispatch({
-  //       type: SHOW_EXPENSE,
-  //       payload
-  //     });
-  //   } catch (error) {
-  //     dispatch({ type: "SHOW_EXPENSE_ERROR", error });
-  //     alert("NG");
-  //   }
-  // };
 };
 export const showHealing = () => {
-  return {
-    type: SHOW_HEALING
+  return async dispatch => {
+    try {
+      const db = await firebase.firestore();
+      const refActivities = await db.collection("activities").get();
+      const refArray = refActivities.docs.map(doc => doc.data());
+      console.log(refArray);
+      dispatch({
+        type: SHOW_HEALING
+      });
+    } catch (error) {
+      dispatch({ type: SHOW_HEALING_ERROR, error });
+      alert("NG");
+    }
   };
-  // return async (dispatch, getState, { getFirebase, getFirestore }) => {
-  //   try {
-  //     const firestore = await getFirestore();
-  //     firestore.collection("activities").get();
-  //     dispatch({
-  //       type: SHOW_HEALING,
-  //       payload
-  //     });
-  //   } catch (error) {
-  //     dispatch({ type: "SHOW_HEALING_ERROR", error });
-  //     alert("NG");
-  //   }
-  // };
 };

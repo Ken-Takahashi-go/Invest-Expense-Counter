@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addItem, deleteItem } from "./../../actions/itemActionCreator";
 import "./ItemList.css";
 import {
+  SHOW_ALL,
   SHOW_INVEST,
   SHOW_EXPENSE,
   SHOW_HEALING
@@ -54,19 +55,22 @@ const ItemList = props => {
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   let items;
-
-  if (state.statusFilter === SHOW_INVEST) {
-    items = state.items.filter(item => !item.hasCompleted());
-  } else if (state.statusFilter === SHOW_EXPENSE) {
-    items = state.items.filter(item => item.hasCompleted());
-  } else if (state.statusFilter === SHOW_HEALING) {
-    items = state.items.filter(item => item.hasCompleted());
+  if (state.visibleFilter === SHOW_ALL) {
+    items = state.item;
+  } else if (state.visibleFilter === SHOW_INVEST) {
+    items = state.item.filter(item => item.status === "投資");
+    console.log(items);
+  } else if (state.visibleFilter === SHOW_EXPENSE) {
+    items = state.item.filter(item => item.status === "浪費");
+  } else if (state.visibleFilter === SHOW_HEALING) {
+    items = state.item.filter(item => item.status === "癒し");
   } else {
     items = [];
   }
 
-  return { items: state };
+  return { items };
 };
 
 const mapDispatchToProps = dispatch => {

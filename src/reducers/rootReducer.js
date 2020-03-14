@@ -1,10 +1,10 @@
-import authReducer from "./authReducer";
 import { itemReducer } from "./itemReducer";
+import { visibleFilterReducer } from "./visibleFilterReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  item: itemReducer
+  item: itemReducer,
+  visibleFilter: visibleFilterReducer
 });
 
 export default rootReducer;

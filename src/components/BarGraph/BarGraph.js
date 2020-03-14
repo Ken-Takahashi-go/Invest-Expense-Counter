@@ -52,7 +52,10 @@ const BarChart = props => {
 };
 
 const mapStateToProps = state => {
-  return { items: state };
+  let items;
+  items = [];
+
+  return { items };
 };
 
 export default connect(mapStateToProps, null)(BarChart);
