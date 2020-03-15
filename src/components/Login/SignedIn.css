@@ -2,8 +2,13 @@
   list-style: none;
   color: white;
   display: flex;
+  text-decoration: none;
+  text-decoration-color: currentcolor;
 }
 .SignedIn li {
   margin: 5px;
   color: white;
+  text-decoration: none;
+  text-decoration-color: currentcolor;
+  font-size: 10px;
 }

@@ -57,6 +57,7 @@ const ItemList = props => {
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   const items = state.visibleFilter;
   return { items };
 };

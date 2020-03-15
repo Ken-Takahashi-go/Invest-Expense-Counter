@@ -1,4 +1,5 @@
 import firebase from "./../Config/fbConfig";
+import { getFirestore } from "redux-firestore";
 
 export const SHOW_ALL = "SHOW_ALL";
 export const SHOW_INVEST = "SHOW_INVEST";
@@ -19,10 +20,6 @@ export const showAll = payload => {
       dispatch({
         type: SHOW_ALL,
         payload: refAll
-
-        // status,
-        // text,
-        // hour
       });
     } catch (error) {
       dispatch({ type: "SHOW_ALL_ERROR", error });
@@ -31,10 +28,11 @@ export const showAll = payload => {
   };
 };
 export const showInvest = payload => {
-  return async dispatch => {
+  return async (dispatch, getState, { getFirebase }) => {
     try {
-      const db = await firebase.firestore();
-      const refActivities = await db.collection("activities").get();
+      const firestore = getFirestore();
+      // const db = await firebase.firestore();
+      const refActivities = await firestore.collection("activities").get();
       const investArray = refActivities.docs
         .map(doc => doc.data())
         .filter(item => item.status === "投資");

@@ -2,7 +2,14 @@
   list-style: none;
   color: white;
   display: flex;
+  text-decoration: none;
+  text-decoration-color: currentcolor;
 }
 .SignedOut li {
-  margin: 5px;
+  margin: 0 5px;
+  padding: 0;
+  color: white;
+  text-decoration: none;
+  text-decoration-color: currentcolor;
+  font-size: 16px;
 }

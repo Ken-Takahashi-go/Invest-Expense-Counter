@@ -9,24 +9,41 @@ import {
 import "./Filter.css";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
 
 const Filter = props => {
   return (
     <Box color="text.primary">
       <Container>
         <div className="container Filter-container">
-          <button className="showAll" onClick={props.showAll}>
-            すべて表示
-          </button>
-          <button className="showInvest" onClick={props.showInvest}>
+          <Button
+            variant="outlined"
+            className="showAll"
+            onClick={props.showAll}
+          >
+            全て
+          </Button>
+          <Button
+            variant="outlined"
+            className="showInvest"
+            onClick={props.showInvest}
+          >
             投資
-          </button>
-          <button className="showExpense" onClick={props.showExpense}>
+          </Button>
+          <Button
+            variant="outlined"
+            className="showExpense"
+            onClick={props.showExpense}
+          >
             浪費
-          </button>
-          <button className="showHealing" onClick={props.showHealing}>
+          </Button>
+          <Button
+            variant="outlined"
+            className="showHealing"
+            onClick={props.showHealing}
+          >
             癒し
-          </button>
+          </Button>
         </div>
       </Container>
     </Box>

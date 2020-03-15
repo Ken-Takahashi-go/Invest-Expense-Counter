@@ -1,9 +1,12 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { signIn } from "./../../actions/authActionCreator";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import "./SignUp.css";
+import "./Login.css";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -15,25 +18,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignUp = props => {
+const LogIn = props => {
+  console.log(props);
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.signIn();
+    props.signIn(email, password);
   };
-
+  const { authError } = props;
   return (
     <div>
       <Box>
         <Container>
-          <div className="signupForm">
+          <div className="loginForm">
             <form className={classes.root} noValidate autoComplete="off">
-              <h2 className="grey-text text-darken-3">Sign Up</h2>
+              <h2>Log in</h2>
               <div className="input-field">
                 <TextField
                   required
@@ -48,8 +50,7 @@ const SignUp = props => {
               </div>
               <div className="input-field">
                 <TextField
-                  required
-                  label="password"
+                  label="Password"
                   type="password"
                   id="password"
                   value={password}
@@ -59,38 +60,17 @@ const SignUp = props => {
                 />
               </div>
               <div className="input-field">
-                <TextField
-                  required
-                  label="First Name"
-                  type="text"
-                  id="firstName"
-                  value={firstName}
-                  onChange={e => {
-                    setFirstName(e.target.value);
-                  }}
-                />
-              </div>
-              <div className="input-field">
-                <TextField
-                  required
-                  label="Last Name"
-                  type="text"
-                  id="lastName"
-                  value={lastName}
-                  onChange={e => {
-                    setLastName(e.target.value);
-                  }}
-                />
-              </div>
-              <div className="input-field">
                 <Button
                   variant="contained"
                   color="secondary"
-                  className="signupbtn"
+                  className="loginbtn"
                   onClick={handleSubmit}
                 >
-                  SignUp
+                  Login
                 </Button>
+                <div className="red-text center">
+                  {authError ? <p>{authError}</p> : null}
+                </div>
               </div>
             </form>
           </div>
@@ -100,4 +80,17 @@ const SignUp = props => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    authError: state.auth.authError
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: (email, password) => dispatch(signIn(email, password))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

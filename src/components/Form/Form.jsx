@@ -6,6 +6,7 @@ import Input from "@material-ui/core/Input";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import "./Form.css";
+import { Redirect } from "react-router-dom";
 
 const Form = props => {
   const [text, setText] = useState("");
@@ -21,6 +22,8 @@ const Form = props => {
       setStatus("投資");
     }
   };
+  const { auth } = props;
+  if (!auth.uid) return <Redirect to="/signin" />;
 
   return (
     <Box color="text.primary">
@@ -77,6 +80,12 @@ const Form = props => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     addItem: (status, text, hour) => {
@@ -86,4 +95,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

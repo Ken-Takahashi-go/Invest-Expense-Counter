@@ -1,0 +1,13 @@
+.loginForm {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.loginbtn {
+  position: absolute;
+  margin: 0 auto;
+  margin-left: 20px;
+  width: 100%;
+}

@@ -5,43 +5,40 @@
   justify-content: space-evenly;
   margin: 0 auto;
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-  box-shadow: 1px 1px 1px;
+  box-shadow: 1px 1px 1px 1px;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
   width: 80%;
   height: 30%;
 }
 
 .Filter-container .showAll {
-  position: absolute;
   display: inline;
-  background-color: blue;
-  color: white;
-  top: 20%;
-  left: 0;
+  background-image: linear-gradient(
+    to top,
+    #c4c5c7 0%,
+    #dcdddf 52%,
+    #ebebeb 100%
+  );
+  /* color: white; */
 }
 .Filter-container .showInvest {
-  position: absolute;
   display: inline;
-  background-color: blue;
-  color: white;
-  top: 20%;
-  left: calc(100% / 3 * 1);
+  /* color: white; */
+  background-image: linear-gradient(-225deg, #7de2fc 0%, #fffeff 100%);
 }
 .Filter-container .showExpense {
-  position: absolute;
-  border-radius: 0%;
   display: inline;
-  background-color: blue;
-  color: white;
-  top: 20%;
-  left: calc(100% / 3 * 2);
+  /* color: white; */
+  background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
 }
 .Filter-container .showHealing {
-  position: absolute;
   display: inline;
-  background-color: blue;
-  color: white;
-  top: 20%;
-  left: calc(100% / 3 * 2.5);
+  /* color: white; */
+  background-image: linear-gradient(
+    -225deg,
+    #39f3bb 0%,
+    #90f9c4 48%,
+    #dfffcd 100%
+  );
 }

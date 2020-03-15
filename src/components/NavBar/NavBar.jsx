@@ -1,12 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
 // import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-import { Link } from "react-router-dom";
 import SignedIn from "../Login/SignedIn";
 import SignedOut from "../Login/SignedOut";
 
@@ -15,41 +14,40 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(1)
   },
   title: {
     flexGrow: 1
   }
 }));
 
-const NavBar = () => {
+const NavBar = props => {
+  const { auth } = props;
+  const links = auth.uid ? <SignedIn /> : <SignedOut />;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          ></IconButton> */}
           <Typography variant="h6" className={classes.title}>
-            <Link to="/" className="brand-logo">
-              Counter
-            </Link>
+            <div className="container">
+              <Link to="/" className="brand-logo"></Link>
+              {links}
+            </div>
           </Typography>
-
-          <Button color="inherit">
-            <SignedIn />
-          </Button>
-          <Button color="inherit">
-            <SignedOut />
-          </Button>
+          {/* <SignedIn />
+          <SignedOut /> */}
         </Toolbar>
       </AppBar>
     </div>
   );
 };
-export default NavBar;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);

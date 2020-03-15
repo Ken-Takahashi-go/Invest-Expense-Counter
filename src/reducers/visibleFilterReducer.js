@@ -5,17 +5,6 @@ import {
   SHOW_HEALING
 } from "../actions/visibleFilterCreator.js";
 import { Item } from "../models/Item";
-// import firebase from "./../Config/fbConfig";
-
-// import { refall } from "../actions/visibleFilterCreator";
-
-// const initialState = refAll;
-
-// const db = async () => {
-//   await firebase.firestore();
-//   await db.collection("activities").get();
-// };
-// const refAll = db.docs.map(doc => doc.data());
 
 export const visibleFilterReducer = (state = [], action) => {
   const item = new Item(action.payload);
