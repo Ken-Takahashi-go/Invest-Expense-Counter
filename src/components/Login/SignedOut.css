@@ -1,0 +1,8 @@
+.SignedOut {
+  list-style: none;
+  color: white;
+  display: flex;
+}
+.SignedOut li {
+  margin: 5px;
+}

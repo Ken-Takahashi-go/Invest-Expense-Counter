@@ -9,18 +9,20 @@ export const SHOW_INVEST_ERROR = "SHOW_INVEST_ERROR";
 export const SHOW_EXPENSE_ERROR = "SHOW_EXPENSE_ERROR";
 export const SHOW_HEALING_ERROR = "SHOW_HEALING_ERROR";
 
-export const showAll = (status, text, hour) => {
+export const showAll = payload => {
   return async dispatch => {
     try {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
-      const refArray = refActivities.docs.map(doc => doc.data());
-      console.log(refArray);
+      const refAll = refActivities.docs.map(doc => doc.data());
+      console.log(refAll);
       dispatch({
         type: SHOW_ALL,
-        status,
-        text,
-        hour
+        payload: refAll
+
+        // status,
+        // text,
+        // hour
       });
     } catch (error) {
       dispatch({ type: "SHOW_ALL_ERROR", error });
@@ -28,32 +30,37 @@ export const showAll = (status, text, hour) => {
     }
   };
 };
-export const showInvest = () => {
+export const showInvest = payload => {
   return async dispatch => {
     try {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
-      const refArray = refActivities.docs.map(doc => doc.data());
-      console.log(refArray);
+      const investArray = refActivities.docs
+        .map(doc => doc.data())
+        .filter(item => item.status === "投資");
+      console.log(investArray);
       dispatch({
-        type: SHOW_INVEST
+        type: SHOW_INVEST,
+        payload: investArray
       });
-      console.log(dispatch);
     } catch (error) {
       dispatch({ type: SHOW_INVEST_ERROR, error });
       alert("NG");
     }
   };
 };
-export const showExpense = () => {
+export const showExpense = payload => {
   return async dispatch => {
     try {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
-      const refArray = refActivities.docs.map(doc => doc.data());
-      console.log(refArray);
+      const expenseArray = refActivities.docs
+        .map(doc => doc.data())
+        .filter(item => item.status === "浪費");
+      console.log(expenseArray);
       dispatch({
-        type: SHOW_EXPENSE
+        type: SHOW_EXPENSE,
+        payload: expenseArray
       });
     } catch (error) {
       dispatch({ type: SHOW_EXPENSE_ERROR, error });
@@ -61,15 +68,18 @@ export const showExpense = () => {
     }
   };
 };
-export const showHealing = () => {
+export const showHealing = payload => {
   return async dispatch => {
     try {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
-      const refArray = refActivities.docs.map(doc => doc.data());
-      console.log(refArray);
+      const healingArray = refActivities.docs
+        .map(doc => doc.data())
+        .filter(item => item.status === "癒し");
+      console.log(healingArray);
       dispatch({
-        type: SHOW_HEALING
+        type: SHOW_HEALING,
+        payload: healingArray
       });
     } catch (error) {
       dispatch({ type: SHOW_HEALING_ERROR, error });

@@ -13,7 +13,6 @@ export const itemReducer = (state = [], action) => {
       return [...state, item];
     case ADD_ITEM_ERROR:
       return state;
-
     case DELETE_ITEM:
       return state.filter((item, id) => {
         return action.id !== item.id;

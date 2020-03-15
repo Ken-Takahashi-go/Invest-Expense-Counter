@@ -1,18 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addItem, deleteItem } from "./../../actions/itemActionCreator";
-import "./ItemList.css";
 import {
-  SHOW_ALL,
-  SHOW_INVEST,
-  SHOW_EXPENSE,
-  SHOW_HEALING
-} from "../../actions/visibleFilterCreator";
+  showAll,
+  showInvest,
+  showExpense,
+  showHealing
+} from "./../../actions/visibleFilterCreator";
+import "./ItemList.css";
 import Container from "@material-ui/core/Container";
 import ClassNames from "classnames";
 import Filter from "./../Filter/Filter";
 
 const ItemList = props => {
+  console.log(props.items);
   const itemLists = props.items.map((item, index) => {
     const classNameForListItem = ClassNames(
       {
@@ -25,6 +26,7 @@ const ItemList = props => {
         rested: item.status === "癒し"
       }
     );
+
     return (
       <Container key={index} maxWidth="sm">
         <li key={props.items.id} className={classNameForListItem}>
@@ -55,21 +57,7 @@ const ItemList = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
-  let items;
-  if (state.visibleFilter === SHOW_ALL) {
-    items = state.item;
-  } else if (state.visibleFilter === SHOW_INVEST) {
-    items = state.item.filter(item => item.status === "投資");
-    console.log(items);
-  } else if (state.visibleFilter === SHOW_EXPENSE) {
-    items = state.item.filter(item => item.status === "浪費");
-  } else if (state.visibleFilter === SHOW_HEALING) {
-    items = state.item.filter(item => item.status === "癒し");
-  } else {
-    items = [];
-  }
-
+  const items = state.visibleFilter;
   return { items };
 };
 
@@ -81,6 +69,22 @@ const mapDispatchToProps = dispatch => {
     },
     deleteItem: id => {
       const action = deleteItem(id);
+      dispatch(action);
+    },
+    showAll: () => {
+      const action = showAll();
+      dispatch(action);
+    },
+    showInvest: () => {
+      const action = showInvest();
+      dispatch(action);
+    },
+    showExpense: () => {
+      const action = showExpense();
+      dispatch(action);
+    },
+    showHealing: () => {
+      const action = showHealing();
       dispatch(action);
     }
   };

@@ -4,17 +4,35 @@ import {
   SHOW_EXPENSE,
   SHOW_HEALING
 } from "../actions/visibleFilterCreator.js";
+import { Item } from "../models/Item";
+// import firebase from "./../Config/fbConfig";
 
-export const visibleFilterReducer = (state = SHOW_ALL, action) => {
+// import { refall } from "../actions/visibleFilterCreator";
+
+// const initialState = refAll;
+
+// const db = async () => {
+//   await firebase.firestore();
+//   await db.collection("activities").get();
+// };
+// const refAll = db.docs.map(doc => doc.data());
+
+export const visibleFilterReducer = (state = [], action) => {
+  const item = new Item(action.payload);
+
   switch (action.type) {
     case SHOW_ALL:
-      return SHOW_ALL;
+      const itemLists = item.status;
+      return itemLists;
     case SHOW_INVEST:
-      return SHOW_INVEST;
+      const investLists = item.status.filter(item => item.status === "投資");
+      return investLists;
     case SHOW_EXPENSE:
-      return SHOW_EXPENSE;
+      const expenseLists = item.status.filter(item => item.status === "浪費");
+      return expenseLists;
     case SHOW_HEALING:
-      return SHOW_HEALING;
+      const healingLists = item.status.filter(item => item.status === "癒し");
+      return healingLists;
     default:
       return state;
   }

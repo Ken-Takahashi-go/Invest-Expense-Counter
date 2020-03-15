@@ -1,10 +1,4 @@
 import React from "react";
-import {
-  SHOW_ALL,
-  SHOW_INVEST,
-  SHOW_EXPENSE,
-  SHOW_HEALING
-} from "../../actions/visibleFilterCreator";
 import { connect } from "react-redux";
 import "./InvestExpense.css";
 import Box from "@material-ui/core/Box";
@@ -50,21 +44,7 @@ const InvenstExpense = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
-  let items;
-  if (state.visibleFilter === SHOW_ALL) {
-    items = state.item;
-  } else if (state.visibleFilter === SHOW_INVEST) {
-    items = state.item.filter(item => item.status === "投資");
-    console.log(items);
-  } else if (state.visibleFilter === SHOW_EXPENSE) {
-    items = state.item.filter(item => item.status === "浪費");
-  } else if (state.visibleFilter === SHOW_HEALING) {
-    items = state.item.filter(item => item.status === "癒し");
-  } else {
-    items = [];
-  }
-
+  const items = state.visibleFilter;
   return { items };
 };
 

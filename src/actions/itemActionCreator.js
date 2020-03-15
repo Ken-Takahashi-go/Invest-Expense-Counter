@@ -34,7 +34,7 @@ export const deleteItem = id => {
       const refActivities = await db.collection("activities").get();
 
       const refArray = refActivities.docs.map(doc => doc.id);
-      //暫定措置
+      //暫定措置(消したいやつを消せていない)
       const refID = refArray.pop();
       console.log(refID);
       await db

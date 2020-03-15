@@ -1,0 +1,9 @@
+.SignedIn {
+  list-style: none;
+  color: white;
+  display: flex;
+}
+.SignedIn li {
+  margin: 5px;
+  color: white;
+}
