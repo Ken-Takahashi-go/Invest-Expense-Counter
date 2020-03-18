@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "./../../actions/authActionCreator";
 import Box from "@material-ui/core/Box";
@@ -18,16 +19,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LogIn = props => {
+const LogIn = withRouter(props => {
   console.log(props);
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     props.signIn(email, password);
+    props.history.push({ pathname: "/main" });
   };
+
   const { authError } = props;
   return (
     <div>
@@ -78,10 +81,9 @@ const LogIn = props => {
       </Box>
     </div>
   );
-};
+});
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     authError: state.auth.authError
   };

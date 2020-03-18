@@ -17,6 +17,7 @@ export const addItem = (status, text, hour) => {
       console.log(addData.id);
       dispatch({
         type: ADD_ITEM,
+
         status,
         text,
         hour
@@ -31,16 +32,22 @@ export const deleteItem = id => {
   return async dispatch => {
     try {
       const db = await firebase.firestore();
-      const refActivities = await db.collection("activities").get();
-
-      const refArray = refActivities.docs.map(doc => doc.id);
-      //暫定措置(消したいやつを消せていない)
-      const refID = refArray.pop();
-      console.log(refID);
-      await db
+      const refActivities = await db
         .collection("activities")
-        .doc(refID)
+        .doc()
         .delete();
+      const delCheckId = await db.collection("activities").get();
+      const docId = delCheckId.docs.map(doc => doc.id);
+      console.log(docId[0]);
+      delCheckId.doc(docId);
+
+      // console.log(refActivities);
+      // const refArray = refActivities.docs.map(doc => doc.id);
+      // console.log(refArray);
+      // //暫定措置(消したいやつを消せていない)
+      // const refID = refArray.pop();
+      // console.log(refID);
+      // await db.collection("activities");
 
       dispatch({ type: DELETE_ITEM, id });
     } catch (error) {

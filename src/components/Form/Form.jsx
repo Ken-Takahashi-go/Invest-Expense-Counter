@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { addItem } from "../../actions/itemActionCreator";
 import Button from "@material-ui/core/Button";
@@ -22,8 +22,6 @@ const Form = props => {
       setStatus("投資");
     }
   };
-  const { auth } = props;
-  if (!auth.uid) return <Redirect to="/signin" />;
 
   return (
     <Box color="text.primary">

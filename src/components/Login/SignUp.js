@@ -1,4 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { signUp } from "./../../actions/authActionCreator";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
@@ -15,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignUp = props => {
+const SignUp = withRouter(props => {
+  console.log(props);
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +28,8 @@ const SignUp = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.signIn();
+    props.signUp(email, password);
+    props.history.push("/login");
   };
 
   return (
@@ -98,6 +103,22 @@ const SignUp = props => {
       </Box>
     </div>
   );
+});
+
+const mapStateToProps = state => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError
+  };
 };
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    signUp: (email, password) => {
+      const action = signUp(email, password);
+      dispatch(action);
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

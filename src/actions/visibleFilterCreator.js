@@ -16,7 +16,7 @@ export const showAll = payload => {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
       const refAll = refActivities.docs.map(doc => doc.data());
-      console.log(refAll);
+
       dispatch({
         type: SHOW_ALL,
         payload: refAll
@@ -31,7 +31,6 @@ export const showInvest = payload => {
   return async (dispatch, getState, { getFirebase }) => {
     try {
       const firestore = getFirestore();
-      // const db = await firebase.firestore();
       const refActivities = await firestore.collection("activities").get();
       const investArray = refActivities.docs
         .map(doc => doc.data())

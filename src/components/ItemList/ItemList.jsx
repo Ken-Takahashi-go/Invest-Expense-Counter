@@ -13,7 +13,6 @@ import ClassNames from "classnames";
 import Filter from "./../Filter/Filter";
 
 const ItemList = props => {
-  console.log(props.items);
   const itemLists = props.items.map((item, index) => {
     const classNameForListItem = ClassNames(
       {

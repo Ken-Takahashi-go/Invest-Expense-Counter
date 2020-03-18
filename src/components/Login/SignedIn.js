@@ -1,21 +1,32 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "./../../actions/authActionCreator";
+import Button from "@material-ui/core/Button";
 import "./SignedIn.css";
 
-const SignedIn = props => {
+const SignedIn = withRouter(props => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.signOut();
+    props.history.push({ pathname: "/login" });
+  };
+
   return (
     <ul className="SignedIn">
       <li>
-        <NavLink to="/Fain">Project</NavLink>
-      </li>
-      <li>
-        <a onClick={props.signOut}>Log Out</a>
+        <Button variant="outlined">
+          <a onClick={handleSubmit}>Log Out</a>
+        </Button>
       </li>
     </ul>
   );
+});
+
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -24,4 +35,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignedIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignedIn);
