@@ -16,8 +16,6 @@ export const itemReducer = (state = [], action) => {
     case ADD_ITEM_ERROR:
       return state;
     case DELETE_ITEM:
-      // console.log(action.id);
-
       return state.filter((item, id) => {
         console.log(item.id);
         return action.id !== item.id;

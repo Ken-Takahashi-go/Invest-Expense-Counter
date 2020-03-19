@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Login from "./components/Login/LogIn";
 import SignUp from "./components/Login/SignUp";
 import Main from "./Main";
+// import { Redirect } from "react-router-dom";
 
 function App() {
   return (

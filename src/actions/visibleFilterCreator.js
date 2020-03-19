@@ -15,7 +15,10 @@ export const showAll = payload => {
     try {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
-      const refAll = refActivities.docs.map(doc => doc.data());
+      const refAll = refActivities.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+      }));
 
       dispatch({
         type: SHOW_ALL,
@@ -33,7 +36,7 @@ export const showInvest = payload => {
       const firestore = getFirestore();
       const refActivities = await firestore.collection("activities").get();
       const investArray = refActivities.docs
-        .map(doc => doc.data())
+        .map(doc => ({ ...doc.data(), id: doc.id }))
         .filter(item => item.status === "投資");
       console.log(investArray);
       dispatch({
@@ -52,7 +55,7 @@ export const showExpense = payload => {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
       const expenseArray = refActivities.docs
-        .map(doc => doc.data())
+        .map(doc => ({ ...doc.data(), id: doc.id }))
         .filter(item => item.status === "浪費");
       console.log(expenseArray);
       dispatch({
@@ -71,7 +74,7 @@ export const showHealing = payload => {
       const db = await firebase.firestore();
       const refActivities = await db.collection("activities").get();
       const healingArray = refActivities.docs
-        .map(doc => doc.data())
+        .map(doc => ({ ...doc.data(), id: doc.id }))
         .filter(item => item.status === "癒し");
       console.log(healingArray);
       dispatch({

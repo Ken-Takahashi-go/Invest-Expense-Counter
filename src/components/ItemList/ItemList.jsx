@@ -25,19 +25,13 @@ const ItemList = props => {
         rested: item.status === "癒し"
       }
     );
-
     return (
       <Container key={index} maxWidth="sm">
-        <li key={props.items.id} className={classNameForListItem}>
+        <li key={index} className={classNameForListItem}>
           <span className="item-status">{item.status}</span>
           <span className="item-text">{item.text}</span>
           <span className="item-hour">{item.hour} Hour</span>
-          <button
-            className="item-button"
-            onClick={() => {
-              props.deleteItem(item.id);
-            }}
-          >
+          <button className="item-button" onClick={props.deleteItem(item.id)}>
             X
           </button>
         </li>

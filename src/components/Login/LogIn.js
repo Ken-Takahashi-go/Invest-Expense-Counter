@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { signIn } from "./../../actions/authActionCreator";
 import Box from "@material-ui/core/Box";
@@ -7,7 +7,6 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./Login.css";
-
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
