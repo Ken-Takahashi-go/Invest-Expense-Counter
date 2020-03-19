@@ -26,21 +26,21 @@ const Filter = props => {
           <Button
             variant="outlined"
             className="showInvest"
-            onClick={props.showInvest}
+            onClick={() => props.showInvest()}
           >
             投資
           </Button>
           <Button
             variant="outlined"
             className="showExpense"
-            onClick={props.showExpense}
+            onClick={() => props.showExpense()}
           >
             浪費
           </Button>
           <Button
             variant="outlined"
             className="showHealing"
-            onClick={props.showHealing}
+            onClick={() => props.showHealing()}
           >
             癒し
           </Button>

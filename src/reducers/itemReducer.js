@@ -9,8 +9,14 @@ import { Item } from "../models/Item";
 export const itemReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_ITEM:
-      const item = new Item(action.id, action.status, action.text, action.hour);
-      console.log(item.id);
+      const item = new Item(
+        action.id,
+        action.date,
+        action.status,
+        action.text,
+        action.hour
+      );
+      console.log(item);
       return [...state, item];
 
     case ADD_ITEM_ERROR:

@@ -13,6 +13,7 @@ import ClassNames from "classnames";
 import Filter from "./../Filter/Filter";
 
 const ItemList = props => {
+  console.log(props);
   const itemLists = props.items.map((item, index) => {
     const classNameForListItem = ClassNames(
       {
@@ -28,10 +29,14 @@ const ItemList = props => {
     return (
       <Container key={index} maxWidth="sm">
         <li key={item.id} className={classNameForListItem}>
+          <span className="item-date">{item.date}</span>
           <span className="item-status">{item.status}</span>
           <span className="item-text">{item.text}</span>
           <span className="item-hour">{item.hour} Hour</span>
-          <button className="item-button" onClick={props.deleteItem(item.id)}>
+          <button
+            className="item-button"
+            onClick={() => props.deleteItem(item.id)}
+          >
             X
           </button>
         </li>

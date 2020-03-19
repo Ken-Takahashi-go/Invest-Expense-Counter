@@ -5,18 +5,20 @@ export const DELETE_ITEM = "DELETE_ITEM";
 export const ADD_ITEM_ERROR = "ADD_ITEM_ERROR";
 export const DELETE_ITEM_ERROR = "DELETE_ITEM_ERROR";
 
-export const addItem = (status, text, hour) => {
+export const addItem = (date, status, text, hour) => {
   return async dispatch => {
     try {
       const db = await firebase.firestore();
       const addData = await db.collection("activities").add({
+        date,
         status,
         text,
         hour
       });
-      console.log(addData.id);
+      console.log(addData);
       dispatch({
         type: ADD_ITEM,
+        date,
         status,
         text,
         hour
