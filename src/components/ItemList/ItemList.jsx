@@ -27,7 +27,7 @@ const ItemList = props => {
     );
     return (
       <Container key={index} maxWidth="sm">
-        <li key={index} className={classNameForListItem}>
+        <li key={item.id} className={classNameForListItem}>
           <span className="item-status">{item.status}</span>
           <span className="item-text">{item.text}</span>
           <span className="item-hour">{item.hour} Hour</span>
