@@ -13,17 +13,21 @@ export const SHOW_HEALING_ERROR = "SHOW_HEALING_ERROR";
 export const showAll = payload => {
   return async dispatch => {
     try {
-      const db = await firebase.firestore();
-      const refActivities = await db.collection("activities").get();
-      const refAll = refActivities.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-      }));
-
-      dispatch({
-        type: SHOW_ALL,
-        payload: refAll
-      });
+      const firestore = await firebase.firestore();
+      const refActivities = await firestore
+        .collection("activities")
+        .onSnapshot(querySnapshot => {
+          const refAll = querySnapshot.docs.map(doc => {
+            return {
+              ...doc.data(),
+              id: doc.id
+            };
+          });
+          dispatch({
+            type: SHOW_ALL,
+            payload: refAll
+          });
+        });
     } catch (error) {
       dispatch({ type: "SHOW_ALL_ERROR", error });
       alert("NG");
@@ -34,15 +38,22 @@ export const showInvest = payload => {
   return async (dispatch, getState, { getFirebase }) => {
     try {
       const firestore = getFirestore();
-      const refActivities = await firestore.collection("activities").get();
-      const investArray = refActivities.docs
-        .map(doc => ({ ...doc.data(), id: doc.id }))
-        .filter(item => item.status === "投資");
-      console.log(investArray);
-      dispatch({
-        type: SHOW_INVEST,
-        payload: investArray
-      });
+      const refActivities = await firestore
+        .collection("activities")
+        .onSnapshot(querySnapshot => {
+          const investArray = querySnapshot.docs
+            .map(doc => {
+              return {
+                ...doc.data(),
+                id: doc.id
+              };
+            })
+            .filter(item => item.status === "投資");
+          dispatch({
+            type: SHOW_INVEST,
+            payload: investArray
+          });
+        });
     } catch (error) {
       dispatch({ type: SHOW_INVEST_ERROR, error });
       alert("NG");
@@ -52,16 +63,23 @@ export const showInvest = payload => {
 export const showExpense = payload => {
   return async dispatch => {
     try {
-      const db = await firebase.firestore();
-      const refActivities = await db.collection("activities").get();
-      const expenseArray = refActivities.docs
-        .map(doc => ({ ...doc.data(), id: doc.id }))
-        .filter(item => item.status === "浪費");
-      console.log(expenseArray);
-      dispatch({
-        type: SHOW_EXPENSE,
-        payload: expenseArray
-      });
+      const firestore = await firebase.firestore();
+      const refActivities = await firestore
+        .collection("activities")
+        .onSnapshot(querySnapshot => {
+          const expenseArray = querySnapshot.docs
+            .map(doc => {
+              return {
+                ...doc.data(),
+                id: doc.id
+              };
+            })
+            .filter(item => item.status === "浪費");
+          dispatch({
+            type: SHOW_EXPENSE,
+            payload: expenseArray
+          });
+        });
     } catch (error) {
       dispatch({ type: SHOW_EXPENSE_ERROR, error });
       alert("NG");
@@ -71,16 +89,23 @@ export const showExpense = payload => {
 export const showHealing = payload => {
   return async dispatch => {
     try {
-      const db = await firebase.firestore();
-      const refActivities = await db.collection("activities").get();
-      const healingArray = refActivities.docs
-        .map(doc => ({ ...doc.data(), id: doc.id }))
-        .filter(item => item.status === "癒し");
-      console.log(healingArray);
-      dispatch({
-        type: SHOW_HEALING,
-        payload: healingArray
-      });
+      const firestore = await firebase.firestore();
+      const refActivities = await firestore
+        .collection("activities")
+        .onSnapshot(querySnapshot => {
+          const healingArray = querySnapshot.docs
+            .map(doc => {
+              return {
+                ...doc.data(),
+                id: doc.id
+              };
+            })
+            .filter(item => item.status === "癒し");
+          dispatch({
+            type: SHOW_HEALING,
+            payload: healingArray
+          });
+        });
     } catch (error) {
       dispatch({ type: SHOW_HEALING_ERROR, error });
       alert("NG");

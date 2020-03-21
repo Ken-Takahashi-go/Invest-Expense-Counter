@@ -5,16 +5,18 @@ import {
 import { addItem, deleteItem } from "./../../src/actions/itemActionCreator";
 
 describe("itemActionCreator.jsのテスト", () => {
-  it("addItemメソッド", async () => {
+  it("addItemメソッド", () => {
+    const dummydate = 1;
     const dummyStatus = "浪費";
     const dummyText = "dummy";
     const dummmyHour = 3;
 
-    const action = await addItem(dummyStatus, dummyText, dummmyHour);
+    const action = addItem(dummydate, dummyStatus, dummyText, dummmyHour);
     console.log(action);
 
     expect(action).toStrictEqual({
       type: ADD_ITEM,
+      date: dummydate,
       status: dummyStatus,
       text: dummyText,
       hour: dummmyHour

@@ -8,10 +8,9 @@ import { Item } from "../models/Item";
 
 export const visibleFilterReducer = (state = [], action) => {
   const item = new Item(action.payload);
-
+  const itemLists = item.status;
   switch (action.type) {
     case SHOW_ALL:
-      const itemLists = item.status;
       return itemLists;
     case SHOW_INVEST:
       const investLists = item.status.filter(item => item.status === "投資");
