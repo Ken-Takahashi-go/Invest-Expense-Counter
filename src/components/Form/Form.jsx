@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addItem } from "../../actions/itemActionCreator";
 import Button from "@material-ui/core/Button";
@@ -6,7 +6,8 @@ import Input from "@material-ui/core/Input";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import "./Form.css";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
+// import firebase from "./../../Config/fbConfig";
 
 const Form = props => {
   const [text, setText] = useState("");
@@ -23,6 +24,9 @@ const Form = props => {
     }
   };
 
+  // console.log(firebase.auth);
+  // const { projects, auth } = props;
+  // if (!auth.uid) return <Redirect to="/login" />;
   return (
     <Box color="text.primary">
       <Container>

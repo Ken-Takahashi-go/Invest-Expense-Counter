@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { signOut } from "./../../actions/authActionCreator";
 import Button from "@material-ui/core/Button";
 import "./SignedIn.css";
+// import { NavLink } from "react-router-dom";
 
 const SignedIn = withRouter(props => {
   const handleSubmit = e => {
@@ -14,6 +15,11 @@ const SignedIn = withRouter(props => {
 
   return (
     <ul className="SignedIn">
+      {/* <li>
+        <NavLink to="/Graph" style={{ textDecoration: "none" }}>
+          <Button variant="outlined">Graph</Button>
+        </NavLink>
+      </li> */}
       <li>
         <Button variant="outlined">
           <a onClick={handleSubmit}>Log Out</a>
