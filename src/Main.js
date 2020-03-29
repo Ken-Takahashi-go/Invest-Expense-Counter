@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "./components/Form/Form";
-import InvestExpense from "./components/InvestExpense/InvestExpense";
+import Counter from "./components/Counter/Counter";
 import ItemList from "./components/ItemList/ItemList";
 import Box from "@material-ui/core/Box";
 
@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <Box>
       {/* <Container maxWidth="sm"> */}
-      <InvestExpense />
+      <Counter />
       <Form />
       <ItemList />
       {/* </Container> */}

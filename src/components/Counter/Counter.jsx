@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./InvestExpense.css";
+import "./Counter.css";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 
-const InvenstExpense = props => {
+const Counter = props => {
   const investLists = props.items
     .filter(item => item.status === "投資")
     .map(item => {
@@ -48,4 +48,4 @@ const mapStateToProps = state => {
   return { items };
 };
 
-export default connect(mapStateToProps, null)(InvenstExpense);
+export default connect(mapStateToProps, null)(Counter);
